@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, compose } from "redux";
 import reducer from "./reducers";
 
 import App from "./routes/App";
@@ -14,7 +14,7 @@ const initialState = {
     {
       id: 2,
       slug: "tvshow-2",
-      title: "In the Dark",
+      title: "Cuanto cobrar por proyecto",
       type: "Scripted",
       language: "English",
       year: 2009,
@@ -22,7 +22,7 @@ const initialState = {
       duration: 164,
       cover: "http://dummyimage.com/800x600.png/99118E/ffffff",
       description: "Vestibulum ac est lacinia nisi venenatis tristique",
-      source: "https://mdstrm.com/video/58333e214ad055d208427db5.mp4",
+      source: "https://www.youtube.com/embed/Dc0PgJm3KA0",
     },
     {
       id: 3,
@@ -172,7 +172,9 @@ const initialState = {
   ],
 };
 
-const store = createStore(reducer, initialState);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducer, initialState, composeEnhancers());
 
 ReactDOM.render(
   <Provider store={store}>
